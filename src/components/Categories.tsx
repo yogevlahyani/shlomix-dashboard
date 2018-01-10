@@ -25,7 +25,7 @@ class Categories extends React.Component<StateTypes> {
   }
 
   fetchCategories: any = (): void => {
-    axios.get('http://localhost/categories').then((cats) => {
+    axios.get('http://104.236.92.123/categories').then((cats) => {
       this.setState({
         cats: cats.data
       });
@@ -43,7 +43,7 @@ class Categories extends React.Component<StateTypes> {
       }
     }).then((e) => {
       if(e != null && e != '') {
-        axios.post('http://localhost/categories/addCategory', {
+        axios.post('http://104.236.92.123/categories/addCategory', {
           name: e
         })
         .then((res: any): void => {
@@ -68,7 +68,7 @@ class Categories extends React.Component<StateTypes> {
       }
     }).then((e) => {
       if(e != null && e != '') {
-        axios.post('http://localhost/categories/updateCategory', {
+        axios.post('http://104.236.92.123/categories/updateCategory', {
           id: cat._id,
           iconURL: e
         }).then((res: any): void => {
@@ -93,7 +93,7 @@ class Categories extends React.Component<StateTypes> {
       }
     }).then((e) => {
       if(e != null && e != '') {
-        axios.post('http://localhost/categories/updateCategory', {
+        axios.post('http://104.236.92.123/categories/updateCategory', {
           id: cat._id,
           name: e
         }).then((res: any): void => {
@@ -115,7 +115,7 @@ class Categories extends React.Component<StateTypes> {
     })
     .then((willDelete) => {
       if (willDelete) {
-        axios.post('http://localhost/categories/deleteCategory', {
+        axios.post('http://104.236.92.123/categories/deleteCategory', {
           id: cat._id
         }).then((res: any): void => {
           console.log(res);

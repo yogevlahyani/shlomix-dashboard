@@ -32,7 +32,7 @@ class Login extends React.Component {
   login = () => {
     const { usernameInput, passwordInput } = this.state;
     let that = this;
-    axios.post('http://localhost/admins/login', {
+    axios.post('http://104.236.92.123/admins/login', {
       username: usernameInput,
       password: passwordInput
     })

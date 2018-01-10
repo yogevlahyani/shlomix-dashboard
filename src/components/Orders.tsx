@@ -50,7 +50,7 @@ class Orders extends React.Component {
     swal(confirmMsg)
     .then((willDelete) => {
       if (willDelete) {
-        axios.post('http://localhost/orders/archiveThatOrder', {
+        axios.post('http://104.236.92.123/orders/archiveThatOrder', {
           orderID: order._id,
           status: 1
         })
@@ -74,7 +74,7 @@ class Orders extends React.Component {
     })
     .then((willDelete) => {
       if (willDelete) {
-        axios.post('http://localhost/orders/killOrder', {
+        axios.post('http://104.236.92.123/orders/killOrder', {
           orderID: order._id
         })
         .then((res: any): void => {

@@ -34,7 +34,7 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
   componentWillMount(): void {
     console.log(this.props);
     const { id } = this.props.match.params;
-    axios.get('http://localhost/orders/order/' + id).then(res => {
+    axios.get('http://104.236.92.123/orders/order/' + id).then(res => {
       console.log(res);
       this.setState({
         order: res.data[0]
@@ -59,7 +59,7 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
     swal(confirmMsg)
     .then((willDelete) => {
       if (willDelete) {
-        axios.post('http://localhost/orders/archiveThatOrder', {
+        axios.post('http://104.236.92.123/orders/archiveThatOrder', {
           orderID: order._id,
           status: 1
         })
@@ -86,7 +86,7 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
     })
     .then((willDelete) => {
       if (willDelete) {
-        axios.post('http://localhost/orders/killOrder', {
+        axios.post('http://104.236.92.123/orders/killOrder', {
           orderID: order._id
         })
         .then((res: any): void => {
