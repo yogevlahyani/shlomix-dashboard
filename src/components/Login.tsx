@@ -32,7 +32,7 @@ class Login extends React.Component {
   login = () => {
     const { usernameInput, passwordInput } = this.state;
     let that = this;
-    axios.post('https://shlomix-server.herokuapp.com/admins/login', {
+    axios.post('http://localhost/admins/login', {
       username: usernameInput,
       password: passwordInput
     })

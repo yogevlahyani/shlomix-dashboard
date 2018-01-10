@@ -123,7 +123,7 @@ class AddItem extends React.Component<PropsTypes, StateTypes> {
   submitItem: any = (): void => {
     const { currentModalItem, name, description, iconURL, kosher, workingHours, isVIP } = this.state;
     if(name !== '') {
-      axios.post('https://shlomix-server.herokuapp.com/items/addItem', {
+      axios.post('http://localhost/items/addItem', {
         catID: currentModalItem._id,
         name,
         description,

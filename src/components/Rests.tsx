@@ -45,7 +45,7 @@ class Rests extends React.Component<StateTypes> {
   }
 
   fetchCategories: any = (): void => {
-    axios.get('https://shlomix-server.herokuapp.com/categories').then((cats) => {
+    axios.get('http://localhost/categories').then((cats) => {
       this.setState({
         cats: cats.data
       });
@@ -53,7 +53,7 @@ class Rests extends React.Component<StateTypes> {
   }
 
   fetchItems: any = (): void => {
-    axios.get('https://shlomix-server.herokuapp.com/items').then((items) => {
+    axios.get('http://localhost/items').then((items) => {
       this.setState({
         items: items.data
       });
@@ -98,7 +98,7 @@ class Rests extends React.Component<StateTypes> {
     })
     .then((willDelete) => {
       if (willDelete) {
-        axios.post('https://shlomix-server.herokuapp.com/items/killItem', {
+        axios.post('http://localhost/items/killItem', {
           itemID: item._id
         })
         .then((res: any): void => {
@@ -123,7 +123,7 @@ class Rests extends React.Component<StateTypes> {
       }
     }).then((e) => {
       if(e != null && e != '') {
-        axios.post('https://shlomix-server.herokuapp.com/items/updateItem', {
+        axios.post('http://localhost/items/updateItem', {
           id: item._id,
           iconURL: e
         }).then((res: any): void => {
@@ -148,7 +148,7 @@ class Rests extends React.Component<StateTypes> {
       }
     }).then((e) => {
       if(e != null && e != '') {
-        axios.post('https://shlomix-server.herokuapp.com/items/updateItem', {
+        axios.post('http://localhost/items/updateItem', {
           id: item._id,
           name: e
         }).then((res: any): void => {
@@ -173,7 +173,7 @@ class Rests extends React.Component<StateTypes> {
       }
     }).then((e) => {
       if(e != null && e != '') {
-        axios.post('https://shlomix-server.herokuapp.com/items/updateItem', {
+        axios.post('http://localhost/items/updateItem', {
           id: item._id,
           description: e
         }).then((res: any): void => {
@@ -188,7 +188,7 @@ class Rests extends React.Component<StateTypes> {
   }
 
   updateItemVIP: any = (item: any): void => {
-    axios.post('https://shlomix-server.herokuapp.com/items/updateItem', {
+    axios.post('http://localhost/items/updateItem', {
       id: item._id,
       isVIP: !item.isVIP,
       kosher: item.kosher
@@ -201,7 +201,7 @@ class Rests extends React.Component<StateTypes> {
   }
 
   updateItemKosher: any = (item: any): void => {
-    axios.post('https://shlomix-server.herokuapp.com/items/updateItem', {
+    axios.post('http://localhost/items/updateItem', {
       id: item._id,
       kosher: !item.kosher,
       isVIP: item.isVIP

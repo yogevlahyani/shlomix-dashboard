@@ -35,7 +35,7 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
   }
 
   fetchItems: any = (): void => {
-    axios.get('https://shlomix-server.herokuapp.com/menu/byItem/' + this.state.item._id)
+    axios.get('http://localhost/menu/byItem/' + this.state.item._id)
       .then((res: any): void => {
         console.log(res);
         this.setState({
@@ -47,7 +47,7 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
   submitItem: any = (): void => {
     const { item, name, description, price } = this.state;
     if(name !== '' && description !== '' && price > 0) {
-      axios.post('https://shlomix-server.herokuapp.com/menu/addMenu', {
+      axios.post('http://localhost/menu/addMenu', {
         itemId: item._id,
         name,
         description,
@@ -73,7 +73,7 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
     })
     .then((willDelete) => {
       if (willDelete) {
-        axios.post('https://shlomix-server.herokuapp.com/menu/killItem', {
+        axios.post('http://localhost/menu/killItem', {
           menuId: menu._id
         })
         .then((res: any): void => {
@@ -98,7 +98,7 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
       }
     }).then((e) => {
       if(e != null && e != '') {
-        axios.post('https://shlomix-server.herokuapp.com/menu/updateItem', {
+        axios.post('http://localhost/menu/updateItem', {
           id: menu._id,
           name: e
         }).then((res: any): void => {
@@ -123,7 +123,7 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
       }
     }).then((e) => {
       if(e != null && e != '') {
-        axios.post('https://shlomix-server.herokuapp.com/menu/updateItem', {
+        axios.post('http://localhost/menu/updateItem', {
           id: menu._id,
           description: e
         }).then((res: any): void => {
@@ -148,7 +148,7 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
       }
     }).then((e) => {
       if(e != null && e != '') {
-        axios.post('https://shlomix-server.herokuapp.com/menu/updateItem', {
+        axios.post('http://localhost/menu/updateItem', {
           id: menu._id,
           price: e
         }).then((res: any): void => {

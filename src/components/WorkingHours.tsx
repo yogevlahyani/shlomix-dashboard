@@ -87,7 +87,7 @@ class WorkingHours extends React.Component<PropsTypes, StateTypes> {
   };
 
   submitItem: any = (): void => {
-    axios.post('https://shlomix-server.herokuapp.com/items/updateItem', {
+    axios.post('http://localhost/items/updateItem', {
       id: this.state.item._id,
       workHours: this.state.workingHours
     })
