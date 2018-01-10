@@ -14,7 +14,7 @@ class Orders extends React.Component {
   };
 
   componentDidMount(): void {
-    const socket = io('https://shlomix-server.herokuapp.com');
+    const socket = io('http://104.236.92.123');
     const orderAlertSound = new Audio(require('../assets/sounds/order-alert.mp3'));
     socket.on('connect', (): void => {
       console.log('Connected!');
