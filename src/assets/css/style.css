@@ -1,0 +1,90 @@
+* {
+  direction: rtl;
+  text-align: right;
+}
+
+button,
+.btn {
+  cursor: pointer
+}
+
+.navbar-light .navbar-brand {
+    margin: 0;
+}
+
+.navbar-left {
+  width: 100%;
+}
+
+.navbar-left .logoutBtn {
+  margin-right: 20px;
+}
+
+.page-content {
+  background: #fff;
+  padding: 20px;
+  float: right;
+  width: 80%;
+  min-height: 100vh;
+}
+
+ul.sidebar-nav {
+    list-style-type: none;
+    text-align: right;
+    padding: 0;
+}
+
+div#sidebar-wrapper {
+    width: 20%;
+    background: #373737;
+    padding: 10px;
+    min-height: 100vh;
+    float: right;
+}
+
+ul.sidebar-nav li a {
+    color: #fff;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+ul.sidebar-nav li:hover a {
+    color: #737373;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+ul.sidebar-nav li {
+    margin: 10px 0;
+    background: #737373;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+ul.sidebar-nav li:hover {
+    background: #f8f9fa;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+ul.sidebar-nav li a i.fa {
+    float: right;
+    margin-top: 5px;
+}
+
+.rests .item {
+  margin: 10px 0;
+}
+
+.rests .item-inner {
+    background: #f8f9fa;
+    padding: 5px;
+}
