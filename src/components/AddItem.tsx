@@ -123,7 +123,7 @@ class AddItem extends React.Component<PropsTypes, StateTypes> {
   submitItem: any = (): void => {
     const { currentModalItem, name, description, iconURL, kosher, workingHours, isVIP } = this.state;
     if(name !== '') {
-      axios.post('http://104.236.92.123/items/addItem', {
+      axios.post('http://104.236.92.123:8080/items/addItem', {
         catID: currentModalItem._id,
         name,
         description,

@@ -14,7 +14,7 @@ class Orders extends React.Component {
   };
 
   componentDidMount(): void {
-    const socket = io('http://104.236.92.123');
+    const socket = io('http://104.236.92.123:8080');
     const orderAlertSound = new Audio(require('../assets/sounds/order-alert.mp3'));
     socket.on('connect', (): void => {
       console.log('Connected!');
@@ -50,7 +50,7 @@ class Orders extends React.Component {
     swal(confirmMsg)
     .then((willDelete) => {
       if (willDelete) {
-        axios.post('http://104.236.92.123/orders/archiveThatOrder', {
+        axios.post('http://104.236.92.123:8080/orders/archiveThatOrder', {
           orderID: order._id,
           status: 1
         })
@@ -74,7 +74,7 @@ class Orders extends React.Component {
     })
     .then((willDelete) => {
       if (willDelete) {
-        axios.post('http://104.236.92.123/orders/killOrder', {
+        axios.post('http://104.236.92.123:8080/orders/killOrder', {
           orderID: order._id
         })
         .then((res: any): void => {

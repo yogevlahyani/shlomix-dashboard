@@ -87,7 +87,7 @@ class WorkingHours extends React.Component<PropsTypes, StateTypes> {
   };
 
   submitItem: any = (): void => {
-    axios.post('http://104.236.92.123/items/updateItem', {
+    axios.post('http://104.236.92.123:8080/items/updateItem', {
       id: this.state.item._id,
       workHours: this.state.workingHours
     })
