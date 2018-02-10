@@ -32,51 +32,51 @@ class WorkingHours extends React.Component<PropsTypes, StateTypes> {
     switch(day) {
       case 'sunday':
         if(type <= 0) {
-          this.state.workingHours.sunday.open = moment(date).format('HH:mm');
+          this.state.workingHours['sunday'].open = moment(date).format('HH:mm');
         } else {
-          this.state.workingHours.sunday.close = moment(date).format('HH:mm');
+          this.state.workingHours['sunday'].close = moment(date).format('HH:mm');
         }
       break;
       case 'monday':
         if(type <= 0) {
-          this.state.workingHours.monday.open = moment(date).format('HH:mm');
+          this.state.workingHours['monday'].open = moment(date).format('HH:mm');
         } else {
-          this.state.workingHours.monday.close = moment(date).format('HH:mm');
+          this.state.workingHours['monday'].close = moment(date).format('HH:mm');
         }
       break;
       case 'tuesday':
         if(type <= 0) {
-          this.state.workingHours.tuesday.open = moment(date).format('HH:mm');
+          this.state.workingHours['tuesday'].open = moment(date).format('HH:mm');
         } else {
-          this.state.workingHours.tuesday.close = moment(date).format('HH:mm');
+          this.state.workingHours['tuesday'].close = moment(date).format('HH:mm');
         }
       break;
       case 'wednsday':
         if(type <= 0) {
-          this.state.workingHours.wednsday.open = moment(date).format('HH:mm');
+          this.state.workingHours['wednsday'].open = moment(date).format('HH:mm');
         } else {
-          this.state.workingHours.wednsday.close = moment(date).format('HH:mm');
+          this.state.workingHours['wednsday'].close = moment(date).format('HH:mm');
         }
       break;
       case 'thursday':
         if(type <= 0) {
-          this.state.workingHours.thursday.open = moment(date).format('HH:mm');
+          this.state.workingHours['thursday'].open = moment(date).format('HH:mm');
         } else {
-          this.state.workingHours.thursday.close = moment(date).format('HH:mm');
+          this.state.workingHours['thursday'].close = moment(date).format('HH:mm');
         }
       break;
       case 'friday':
         if(type <= 0) {
-          this.state.workingHours.friday.open = moment(date).format('HH:mm');
+          this.state.workingHours['friday'].open = moment(date).format('HH:mm');
         } else {
-          this.state.workingHours.friday.close = moment(date).format('HH:mm');
+          this.state.workingHours['friday'].close = moment(date).format('HH:mm');
         }
       break;
       case 'saturday':
         if(type <= 0) {
-          this.state.workingHours.saturday.open = moment(date).format('HH:mm');
+          this.state.workingHours['saturday'].open = moment(date).format('HH:mm');
         } else {
-          this.state.workingHours.saturday.close = moment(date).format('HH:mm');
+          this.state.workingHours['saturday'].close = moment(date).format('HH:mm');
         }
       break;
       default:
