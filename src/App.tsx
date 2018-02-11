@@ -10,6 +10,7 @@ import OrderDetails from './components/OrderDetails';
 import Categories from './components/Categories';
 import Rests from './components/Rests';
 import OrdersView from './components/OrdersView';
+import Sales from './components/Sales';
 
 class App extends React.Component {
   render() {
@@ -23,6 +24,7 @@ class App extends React.Component {
             <Route exact={true} path="/dash/categories" component={Categories}/>
             <Route exact={true} path="/dash/rests" component={Rests}/>
             <Route exact={true} path="/dash/orders" component={OrdersView}/>
+            <Route exact={true} path="/dash/sales" component={Sales}/>
           </Switch>
         </div>
       </Router>

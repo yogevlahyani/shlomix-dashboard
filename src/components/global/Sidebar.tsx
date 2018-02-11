@@ -29,6 +29,12 @@ const Sidebar: React.SFC = () => {
               ניהול הזמנות
             </Link>
           </li>
+          <li>
+            <Link to="/dash/sales">
+              <i className="fa fa-gift" />
+              ניהול פופאפ מבצעים
+            </Link>
+          </li>
       </ul>
   </div>
   );
