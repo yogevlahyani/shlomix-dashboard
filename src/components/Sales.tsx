@@ -221,7 +221,7 @@ class Sales extends React.Component<StateTypes> {
       swal(res.data.feedback, {
         icon: res.data.type,
       });
-      this.fetchItems();
+      this.fetchDeals();
     }).catch(err => console.log(err));
   }
 
