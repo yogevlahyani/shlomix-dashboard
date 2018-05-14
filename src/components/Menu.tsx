@@ -29,15 +29,12 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
   };
 
   componentDidMount() {
-    console.log(this.props.item);
-    console.log(this.state.item);
     this.fetchItems();
   }
 
   fetchItems: any = (): void => {
     axios.get('http://104.236.92.123:8080/menu/byItem/' + this.state.item._id)
       .then((res: any): void => {
-        console.log(res);
         this.setState({
           menuItems: res.data
         });
@@ -54,7 +51,6 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
         price
       })
       .then((res: any): void => {
-        console.log(res);
         swal(res.data.feedback, {
           icon: res.data.type,
         });
@@ -102,7 +98,6 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
           id: menu._id,
           name: e
         }).then((res: any): void => {
-          console.log(res);
           swal(res.data.feedback, {
             icon: res.data.type,
           });
@@ -127,7 +122,6 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
           id: menu._id,
           description: e
         }).then((res: any): void => {
-          console.log(res);
           swal(res.data.feedback, {
             icon: res.data.type,
           });
@@ -152,7 +146,6 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
           id: menu._id,
           price: e
         }).then((res: any): void => {
-          console.log(res);
           swal(res.data.feedback, {
             icon: res.data.type,
           });
@@ -177,21 +170,24 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
           menuId: menu._id,
           name: e
         }).then((res: any): void => {
-          console.log(res);
           this.fetchItems();
         }).catch(err => console.log(err));
 
-        swal({
-          content: {
-            element: 'textarea',
-            attributes: {
-              placeholder: 'תוספת כל שורה, לדוגמא: \n זיתים שחורים \n זיתים ירוקים \n פטריות \n ...',
-              style: 'height: 350px'
-            }
-          }
-        }).then((e: string) => {
-
-        });
+        // const {value: formValues} = swal({
+        //   title: 'Multiple inputs',
+        //   html: '<input id="swal-input1" class="swal2-input"><input id="swal-input2" class="swal2-input">',
+        //   focusConfirm: false,
+        //   preConfirm: () => {
+        //     return [
+        //       document.getElementById('swal-input1').value,
+        //       document.getElementById('swal-input2').value
+        //     ]
+        //   }
+        // })
+        
+        // if (formValues) {
+        //   swal(JSON.stringify(formValues))
+        // }
           
 
         // axios.post('http://104.236.92.123:8080/menu/updateItem', {
@@ -212,10 +208,21 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
 
     const { item, menuItems } = this.state;
 
+    let renderToppingsItems = (additionalItem: any) => additionalItem.map((ai: any, aiIndex: number) => {
+      console.log(ai);
+      return (
+        <div>
+          {ai.name} - {ai.price}<i className="fa fa-ils" />
+        </div>
+      );
+    });
+
     let renderToppings = (additionSection: any) => additionSection.map((as: any, asIndex: number) => {
       return (
         <div>
           <h2>{ as.name }</h2>
+          { renderToppingsItems(as.additionalItem) }
+          <button className="btn btn-success">הוסף עוד תוספות</button>
         </div>
       );
     });
