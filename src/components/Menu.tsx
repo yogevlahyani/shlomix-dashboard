@@ -162,6 +162,55 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
     }).catch(err => console.log('err: ' + err));
   }
 
+  _addToppings = (menu: any): void => {
+    swal({
+      content: {
+        element: "input",
+        attributes: {
+          placeholder: 'לדוגמא: תוספות \ תוספות למגש פיצה חצי 1 \ תוספות למגש חצי 2',
+          type: "text",
+        }
+      }
+    }).then((e) => {
+      if(e != null && e != '') {
+        axios.post('http://104.236.92.123:8080/menu/additional/section/add', {
+          menuId: menu._id,
+          name: e
+        }).then((res: any): void => {
+          console.log(res);
+          swal(res.data.feedback, {
+            icon: res.data.type,
+          });
+          this.fetchItems();
+        }).catch(err => console.log(err));
+
+        swal({
+          content: {
+            element: 'textarea',
+            attributes: {
+              placeholder: 'תוספת כל שורה, לדוגמא: \n זיתים שחורים \n זיתים ירוקים \n פטריות \n ...',
+              style: 'height: 350px'
+            }
+          }
+        }).then((e: string) => {
+
+        });
+          
+
+        // axios.post('http://104.236.92.123:8080/menu/updateItem', {
+        //   id: menu._id,
+        //   name: e
+        // }).then((res: any): void => {
+        //   console.log(res);
+        //   swal(res.data.feedback, {
+        //     icon: res.data.type,
+        //   });
+        //   this.fetchItems();
+        // }).catch(err => console.log(err));
+      }
+    }).catch(err => console.log('err: ' + err));
+  }
+
   render() {
 
     const { item, menuItems } = this.state;
@@ -183,6 +232,11 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
             onClick={() => this.updateItemPrice(mItem)}
           >{mItem.price} <i className="fa fa-ils" /></td>
           <td>{moment(mItem.created).format("DD/MM/YYYY")}</td>
+          <td>
+            <button className="btn btn-success" onClick={() => this._addToppings(mItem)}>
+              <i className="fa fa-plus" />
+            </button>
+          </td>
           <td>
             <button className="btn btn-danger" onClick={() => this._delItem(mItem)}>
               <i className="fa fa-times" />
@@ -241,6 +295,7 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
                 <th>תיאור</th>
                 <th>מחיר</th>
                 <th>נוצר בתאריך</th>
+                <th>תוספות</th>
                 <th>מחיקה</th>
               </tr>
             </thead>
