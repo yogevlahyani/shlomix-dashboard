@@ -204,6 +204,22 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
     }).catch(err => console.log('err: ' + err));
   }
 
+  delToppingsSection = (sectionId: string): void => {
+    axios.post('http://104.236.92.123:8080/menu/addition/section/delete', {
+          id: sectionId
+        }).then((res: any): void => {
+          this.fetchItems();
+        }).catch(err => console.log(err));
+  }
+
+  delToppingsItem = (itemId: string): void => {
+    axios.post('http://104.236.92.123:8080/menu/addition/item/delete', {
+          id: itemId
+        }).then((res: any): void => {
+          this.fetchItems();
+        }).catch(err => console.log(err));
+  }
+
   render() {
 
     const { item, menuItems } = this.state;
@@ -212,11 +228,11 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
       console.log(ai);
       return (
         <div className="row">
-          <div class="col">
+          <div className="col">
             {ai.name} - {ai.price}<i className="fa fa-ils" />
           </div>
-          <div class="col">
-            <button className="btn btn-danger">X</button>
+          <div className="col">
+            <button className="btn btn-danger" onClick={() => this.delToppingsItem(ai._id)}>X</button>
           </div>
         </div>
       );
@@ -230,7 +246,7 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
               <h2>{ as.name }</h2>
             </div>
             <div className="col">
-              <button className="btn btn-danger">X</button>
+              <button className="btn btn-danger" onClick={() => this.delToppingsSection(as._id)}>X</button>
             </div>
           </div>
           { renderToppingsItems(as.additionalItem) }
