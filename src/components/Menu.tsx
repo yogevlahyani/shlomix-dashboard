@@ -178,9 +178,6 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
           name: e
         }).then((res: any): void => {
           console.log(res);
-          swal(res.data.feedback, {
-            icon: res.data.type,
-          });
           this.fetchItems();
         }).catch(err => console.log(err));
 
@@ -236,6 +233,7 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
             <button className="btn btn-success" onClick={() => this._addToppings(mItem)}>
               <i className="fa fa-plus" />
             </button>
+            { mItem }
           </td>
           <td>
             <button className="btn btn-danger" onClick={() => this._delItem(mItem)}>
