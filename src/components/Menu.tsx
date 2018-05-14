@@ -211,8 +211,13 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
     let renderToppingsItems = (additionalItem: any) => additionalItem.map((ai: any, aiIndex: number) => {
       console.log(ai);
       return (
-        <div>
-          {ai.name} - {ai.price}<i className="fa fa-ils" />
+        <div className="row">
+          <div class="col">
+            {ai.name} - {ai.price}<i className="fa fa-ils" />
+          </div>
+          <div class="col">
+            <button className="btn btn-danger">X</button>
+          </div>
         </div>
       );
     });
@@ -220,7 +225,14 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
     let renderToppings = (additionSection: any) => additionSection.map((as: any, asIndex: number) => {
       return (
         <div>
-          <h2>{ as.name }</h2>
+          <div className="row">
+            <div className="col">
+              <h2>{ as.name }</h2>
+            </div>
+            <div className="col">
+              <button className="btn btn-danger">X</button>
+            </div>
+          </div>
           { renderToppingsItems(as.additionalItem) }
           <button className="btn btn-success">הוסף עוד תוספות</button>
         </div>
