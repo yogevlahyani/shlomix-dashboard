@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as swal from 'sweetalert';
+import * as Modal from 'react-modal';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import * as moment from 'moment';
@@ -11,7 +12,11 @@ interface StateTypes {
   name: string,
   description: string,
   price: number,
-  menuItems: any
+  menuItems: any,
+  showModal: boolean,
+  toppingsName: string,
+  toppingsPrice: number,
+  currentAsid: string
 }
 
 interface PropsTypes {
@@ -25,7 +30,11 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
     name: '',
     description: '',
     price: 0,
-    menuItems: []
+    menuItems: [],
+    showModal: false,
+    toppingsName: '',
+    toppingsPrice: 0,
+    currentAsid: ''
   };
 
   componentDidMount() {
@@ -177,23 +186,14 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
   }
 
   addToppingsItem = async (asId: string) => {
-    const {value: formValues} = await swal({
-      title: 'Multiple inputs',
-      html:
-        '<input id="swal-input1" class="swal2-input">' +
-        '<input id="swal-input2" class="swal2-input">',
-      focusConfirm: false,
-      preConfirm: () => {
-        return [
-          document.getElementById('swal-input1').value,
-          document.getElementById('swal-input2').value
-        ]
-      }
-    })
-    
-    if (formValues) {
-      swal(JSON.stringify(formValues))
-    }
+    axios.post('http://104.236.92.123:8080/menu/additional/item/add', {
+      asId,
+      name: this.state.toppingsName,
+      description: '',
+      price: this.state.toppingsPrice
+    }).then((res: any): void => {
+      this.fetchItems();
+    }).catch(err => console.log(err));
   }
 
   delToppingsSection = (sectionId: string): void => {
@@ -242,7 +242,7 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
             </div>
           </div>
           { renderToppingsItems(as.additionalItem) }
-          <button className="btn btn-success">הוסף עוד תוספות</button>
+          <button className="btn btn-success" onClick={() => this.setState({ showModal: true, currentAsid: as._id })}>הוסף עוד תוספות</button>
         </div>
       );
     });
@@ -336,6 +336,29 @@ class Menu extends React.Component<PropsTypes, StateTypes> {
               {listItems}
             </tbody>
           </table>
+
+          <Modal
+            isOpen={this.state.showModal}
+            onRequestClose={() => this.setState({ showModal: false })}
+            contentLabel="Modal"
+            style={{ content: { width: '400px', height: '200px' } }}
+          >
+            <input type="text" placeholder="שם התוספת" onChange={(e) => {
+                    this.setState({
+                      toppingsName: e.target.value
+                    });
+                  }}  />
+            <br />
+            <input type="number" placeholder="מחיר" onChange={(e) => {
+                    this.setState({
+                      toppingsPrice: parseInt(e.target.value)
+                    });
+                  }} />
+            <button className="btn btn-success" onClick={() => {
+              this.addToppingsItem(this.state.currentAsid);
+              this.setState({ showModal: false });
+            }}>הוסף</button>
+          </Modal>
 
         </div>
       </MuiThemeProvider>
