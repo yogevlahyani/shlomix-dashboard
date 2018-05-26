@@ -112,7 +112,10 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
       return (
         <tr key={i}>
           <td>{rest}</td>
-          <td>{item.name}</td>
+          <td>
+            {item.name}<br />
+            { JSON.stringify(item) }
+          </td>
           <td className="text-center">{item.price} <i className="fa fa-ils" /></td>
         </tr>
       );
