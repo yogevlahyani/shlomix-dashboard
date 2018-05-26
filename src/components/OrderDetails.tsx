@@ -114,6 +114,7 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
           <td>{rest}</td>
           <td>
             {item.name}<br />
+            {item.name}<br />
             { JSON.stringify(item) }
           </td>
           <td className="text-center">{item.price} <i className="fa fa-ils" /></td>
