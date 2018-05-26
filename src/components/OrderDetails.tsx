@@ -122,9 +122,7 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
         <tr key={i}>
           <td>{rest}</td>
           <td>{item.name}</td>
-          <td>
-            {this.renderToppings(item)}
-          </td>
+          <td> { this.renderToppings(item) } </td>
           <td className="text-center">{item.price} <i className="fa fa-ils" /></td>
         </tr>
       );
