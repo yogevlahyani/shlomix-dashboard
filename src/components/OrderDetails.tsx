@@ -103,6 +103,15 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
 
   }
 
+  renderToppings = (item: any) => {
+    return item.additionalSection.map((as: any, i: number) => (
+      <div>
+        <h2>{ as.sectionName }</h2>
+        { as.name }
+      </div>
+    ));
+  }
+
   render() {
     let timePassed = moment(this.state.order.created).fromNow();
     let orderCreated = moment(this.state.order.created).format("DD/MM/YY");
@@ -112,10 +121,9 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
       return (
         <tr key={i}>
           <td>{rest}</td>
+          <td>{item.name}</td>
           <td>
-            {item.name}<br />
-            {item.name}<br />
-            { JSON.stringify(item) }
+            {this.renderToppings(item)}
           </td>
           <td className="text-center">{item.price} <i className="fa fa-ils" /></td>
         </tr>
@@ -173,6 +181,7 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
                         <tr>
                           <td><strong>מסעדה</strong></td>
                           <td><strong>מוצר</strong></td>
+                          <td><strong>תוספות</strong></td>
                           <td className="text-center"><strong>מחיר</strong></td>
                         </tr>
                       </thead>
