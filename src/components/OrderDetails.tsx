@@ -193,6 +193,7 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
                         <tr>
           								<td className="text-right"><strong>סה"כ</strong></td>
                           <td className="no-line" />
+                          <td className="no-line" />
           								<td className="text-center">{total} <i className="fa fa-ils" /></td>
           							</tr>
                       </tbody>
