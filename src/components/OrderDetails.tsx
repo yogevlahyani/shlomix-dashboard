@@ -106,12 +106,23 @@ class OrderDetails extends React.Component<PropsType, StateType>  {
   renderToppings = (item: any) => {
     console.log(item);
     if (item.additionalSection && item.additionalSection.length > 0) {
-      return item.additionalSection.map((as: any, i: number) => (
-        <div>
-          <h2>{ as.sectionName }</h2>
-          { as.name } - { as.price } <i className="fa fa-ils" />
-        </div>
-      ));
+      let lastSectionName: string = '';
+      return item.additionalSection.map((as: any, i: number) => {
+        if (lastSectionName === as.sectionName) {
+          as.sectionName = null;
+        } else {
+          lastSectionName = as.sectionName;
+        }
+        return (
+          <div>
+            {
+              as.sectionName && as.sectionName !== null ?
+                <h2>{ as.sectionName }</h2> : null
+            }
+            { as.name } - { as.price } <i className="fa fa-ils" />
+          </div>
+        )
+      });
     }
 
     return <div>ללא תוספות</div>;

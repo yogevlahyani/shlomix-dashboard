@@ -115,7 +115,15 @@ class Orders extends React.Component {
               <ul>
                 {
                   order.cart.map((detail: any, i: number) => {
-                    return <li key={i}>{detail.name}: {detail.price} <i className="fa fa-ils" /></li>;
+                    return (
+                      <li key={i}>
+                        {detail.name}: {detail.price} <i className="fa fa-ils" />
+                        <br />
+                        {
+                          detail.additionalSection.length > 0 ? <strong>עם תוספות</strong> : 'ללא תוספות'
+                        }
+                      </li>
+                    );
                   })
                 }
               </ul>
